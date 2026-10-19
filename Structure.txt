@@ -1,0 +1,26 @@
+task_management_api/
+│
+├── venv/                  # Python virtual environment (ignored by git)
+├── .env                   # Environment variables (DB URL, secret keys - ignored by git)
+├── .gitignore             # Files/folders for git to ignore (venv, __pycache__, .env)
+├── requirements.txt       # Project dependencies (FastAPI, Uvicorn, SQLAlchemy, PyMySQL, Passlib)
+├── main.py                # FastAPI app entry point (app initialization, router includes)
+│
+├── database/              # Database connection & session management
+│   └── connection.py      # SQLAlchemy engine, SessionLocal, and get_db dependency
+│
+├── models/                # SQLAlchemy ORM Models (Defines the 4 MySQL Tables)
+│   ├── __init__.py
+│   ├── user.py            # 'users' table
+│   ├── project.py         # 'projects' table & 'user_projects' table
+│   └── task.py            # 'tasks' table
+│
+├── schemas/               # Pydantic Models (Data validation & request/response bodies)
+│   ├── user.py            # User registration & login schemas
+│   ├── project.py         # Project creation & response schemas
+│   └── task.py            # Task creation & status update schemas
+│
+└── routers/               # API Endpoints (The actual route controllers)
+    ├── auth.py            # Authentication & user signup endpoints (/register, /login)
+    ├── projects.py        # Project CRUD endpoints (/projects)
+    └── tasks.py           # Task CRUD endpoints (/projects/{pid}/tasks)
